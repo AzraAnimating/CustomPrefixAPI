@@ -17,11 +17,27 @@
     </build>
 
     <name>jdacustomprefix</name>
-    <url>http://maven.apache.org/</url>
+    <description>library to enable simple CustomPrefix Applications for DiscordBots</description>
+    <url>https://github.com/AzraAnimating/CustomPrefixAPI</url>
 
     <properties>
-            <project.build.sourceEncoding>UTF=8</project.build.sourceEncoding>
+            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <developers>
+        <developer>
+            <name>Azra Animating</name>
+            <email>azraanimating@minereaper.de</email>
+            <organization>com.github.azraanimating</organization>
+            <organizationUrl>https://github.com/AzraAnimating/</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/azraanimating/CustomPrefixAPI.git</connection>
+        <developerConnection>scm:git:ssh://github.com:azraanimating/CustomPrefixAPI.git</developerConnection>
+        <url>https://github.com/AzraAnimating/CustomPrefixAPI</url>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -32,7 +48,7 @@
     </dependencies>
 
 
-    <groupId>CustomPrefix</groupId>
+    <groupId>com.github.azraanimating</groupId>
     <artifactId>CustomPrefixAPI</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
