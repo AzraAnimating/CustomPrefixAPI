@@ -1,9 +1,11 @@
 package de.azraanimating.customprefixapi.command;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
+import java.awt.*;
 import java.lang.reflect.Array;
 
 public class CommandEvent {
@@ -69,11 +71,22 @@ public class CommandEvent {
         event.getChannel().sendMessage(pMessage).queue();
     }
 
+    public void sendEmbed(EmbedBuilder embedBuilder){
+        event.getChannel().sendMessage(embedBuilder.build()).queue();
+    }
+
     public void replyCodeLine(String pMessage){
         reply("``" + pMessage + "``");
     }
 
     public void replyCode(String pMessage){
         reply("```" + pMessage + "```");
+    }
+
+    public void sendSimpleEmbed(String pHeader, String pMessage, Color pColor){
+        EmbedBuilder eb = new EmbedBuilder()
+                .addField(pHeader, pMessage, false)
+                .setColor(pColor);
+        event.getChannel().sendMessage(eb.build()).queue();
     }
 }
