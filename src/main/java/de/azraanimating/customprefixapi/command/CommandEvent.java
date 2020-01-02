@@ -6,7 +6,8 @@ import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.awt.*;
-import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 
 public class CommandEvent {
 
@@ -60,9 +61,15 @@ public class CommandEvent {
         return event;
     }
 
+    public TextChannel getTextChannel(){
+        return event.getGuild().getTextChannelById(event.getChannel().getId());
+    }
 
-    public String[] getArgs(){
-        return event.getMessage().getContentRaw().substring(command.name.length() + 1).split(" ");
+    public List<String> getArgs(){
+        String[] args = event.getMessage().getContentRaw().substring(command.name.length() + 1).split(" ");
+        List<String> list = Arrays.asList(args);
+
+        return list;
     }
 
     //New Methods

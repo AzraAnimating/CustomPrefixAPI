@@ -20,7 +20,7 @@ public class PrivateMessenger {
         privateChannel.sendMessage(pMessage).queue();
     }
 
-    public Message getLastMessage(){
+    public Message getPreviousMessage(){
         return privateChannel.getHistory().getMessageById(privateChannel.getLatestMessageId());
     }
 }
