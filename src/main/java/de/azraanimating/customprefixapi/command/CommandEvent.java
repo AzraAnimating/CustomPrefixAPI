@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.awt.*;
+import java.rmi.MarshalledObject;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,10 +14,12 @@ public class CommandEvent {
 
     private GuildMessageReceivedEvent event;
     private Command command;
+    private String prefix;
 
-    public CommandEvent(GuildMessageReceivedEvent receivedEvent, Command receivedCommand){
+    public CommandEvent(GuildMessageReceivedEvent receivedEvent, Command receivedCommand, String receivedPrefix){
         event = receivedEvent;
         command = receivedCommand;
+        prefix = receivedPrefix;
     }
 
     //GetMethods
@@ -57,6 +60,14 @@ public class CommandEvent {
         return event.isWebhookMessage();
     }
 
+    public Message getMessage(){
+        return event.getMessage();
+    }
+
+    public String getMessageText(){
+        return event.getMessage().getContentRaw();
+    }
+
     public GuildMessageReceivedEvent getMessageReceivedEvent(){
         return event;
     }
@@ -65,8 +76,12 @@ public class CommandEvent {
         return event.getGuild().getTextChannelById(event.getChannel().getId());
     }
 
+    public String getPrefix(){
+        return prefix;
+    }
+
     public List<String> getArgs(){
-        String[] args = event.getMessage().getContentRaw().substring(command.name.length() + 1).split(" ");
+        String[] args = event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1).split(" ");
         List<String> list = Arrays.asList(args);
 
         return list;

@@ -2,12 +2,24 @@ package de.azraanimating.customprefixapi.command;
 
 public abstract class Command {
 
-    public String name = "";
+    protected String name = "";
+
+    protected String description = "";
+
+    protected String syntax = "";
 
     public String getName(){
         return name;
     }
 
-    protected abstract void excecute(CommandEvent event, String prefix);
+    public String getDescription() {
+        return description;
+    }
+
+    public String getSyntax() {
+        return syntax;
+    }
+
+    protected abstract void excecute(CommandEvent event);
 
 }

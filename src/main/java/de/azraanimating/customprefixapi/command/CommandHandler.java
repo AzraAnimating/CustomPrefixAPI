@@ -1,5 +1,6 @@
 package de.azraanimating.customprefixapi.command;
 
+import de.azraanimating.customprefixapi.help.HelpBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.util.ArrayList;
@@ -17,7 +18,6 @@ public class CommandHandler {
         return commands;
     }
 
-
     public void handle(GuildMessageReceivedEvent event, String prefix){
         String message = event.getMessage().getContentRaw();
 
@@ -28,7 +28,7 @@ public class CommandHandler {
 
             commands.forEach(command -> {
                 if(handleCommand.equalsIgnoreCase(command.getName())){
-                    command.excecute(new CommandEvent(event, command), prefix);
+                    command.excecute(new CommandEvent(event, command, prefix));
                 }
             });
         }
