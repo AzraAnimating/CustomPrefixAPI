@@ -6,7 +6,6 @@ import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.awt.*;
-import java.rmi.MarshalledObject;
 import java.util.Arrays;
 import java.util.List;
 
@@ -79,6 +78,11 @@ public class CommandEvent {
     public String getPrefix(){
         return prefix;
     }
+
+    public boolean equals(CommandEvent commandEvent){
+        return event.equals(commandEvent.getMessageReceivedEvent());
+    }
+
 
     public List<String> getArgs(){
         String[] args = event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1).split(" ");

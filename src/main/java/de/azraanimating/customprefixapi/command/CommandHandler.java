@@ -1,6 +1,5 @@
 package de.azraanimating.customprefixapi.command;
 
-import de.azraanimating.customprefixapi.help.HelpBuilder;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.util.ArrayList;
