@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CommandHandler {
 
-    public static List<Command> commands = new ArrayList<Command>();
+    private static List<Command> commands = new ArrayList<Command>();
 
     public void addCommand(Command command){
         commands.add(command);

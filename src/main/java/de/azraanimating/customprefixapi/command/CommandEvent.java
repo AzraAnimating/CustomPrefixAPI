@@ -91,6 +91,10 @@ public class CommandEvent {
         return list;
     }
 
+    public String getExecutorAvatar(){
+        return "https://cdn.discordapp.com/avatars/" + event.getMember().getId() +  "/" + event.getMember().getUser().getDefaultAvatarId() + ".png?size=2048";
+    }
+
     //New Methods
 
     public void reply(String pMessage){
