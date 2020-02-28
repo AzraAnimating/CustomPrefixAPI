@@ -1,11 +1,13 @@
 package de.azraanimating.customprefixapi.command;
 
+import de.azraanimating.customprefixapi.utils.Tools;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,6 +35,10 @@ public class CommandEvent {
 
     public TextChannel getChannel(){
         return event.getChannel();
+    }
+
+    public Category getCategory() {
+        return this.getChannel().getParent();
     }
 
     public User getUser(){
@@ -93,6 +99,32 @@ public class CommandEvent {
 
     public String getExecutorAvatar(){
         return "https://cdn.discordapp.com/avatars/" + event.getMember().getId() +  "/" + event.getMember().getUser().getDefaultAvatarId() + ".png?size=2048";
+    }
+
+    public List<Member> getMentions(){
+        List<String> memberIDs = new ArrayList<>();
+        List<Member> members = new ArrayList<>();
+
+        this.getArgs().forEach(argument -> {
+            if(argument.startsWith("<@!") && argument.endsWith(">")){
+                argument = argument.replace("<@!", "").replace(">", "");
+                memberIDs.add(argument);
+            }
+        });
+
+        memberIDs.forEach(userID -> {
+            try {
+                members.add(this.getGuild().getMemberById(userID));
+            } catch (Exception e){
+
+            }
+        });
+
+        return members;
+    }
+
+    public Tools getTools(){
+        return new Tools(this);
     }
 
     //New Methods

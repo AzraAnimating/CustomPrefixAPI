@@ -1,6 +1,8 @@
 package de.azraanimating.customprefixapi.command;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.sharding.DefaultShardManager;
+import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 
 import java.util.ArrayList;
 import java.util.List;

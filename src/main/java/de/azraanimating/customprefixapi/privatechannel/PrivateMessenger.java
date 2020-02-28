@@ -8,6 +8,10 @@ public class PrivateMessenger {
 
     PrivateChannel privateChannel;
 
+    /**
+     * Will be replaced
+     * @param user
+     */
     public PrivateMessenger(User user){
         privateChannel = user.openPrivateChannel().complete();
     }
