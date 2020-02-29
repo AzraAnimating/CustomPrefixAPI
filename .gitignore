@@ -11,7 +11,7 @@
 *.ctxt
 
 #IntelliJ files
-out/
+#out/
 .idea/
 *.iml
 
