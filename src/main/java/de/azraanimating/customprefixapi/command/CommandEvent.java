@@ -133,8 +133,8 @@ public class CommandEvent {
         event.getChannel().sendMessage(pMessage).queue();
     }
 
-    public void sendEmbed(EmbedBuilder embedBuilder){
-        event.getChannel().sendMessage(embedBuilder.build()).queue();
+    public void reply(MessageEmbed messageEmbed) {
+        event.getChannel().sendMessage(messageEmbed).queue();
     }
 
     public void replyCodeLine(String pMessage){
