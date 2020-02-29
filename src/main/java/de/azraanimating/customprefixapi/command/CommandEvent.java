@@ -91,14 +91,18 @@ public class CommandEvent {
 
 
     public List<String> getArgs(){
-        String[] args = event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1).split(" ");
-        List<String> list = Arrays.asList(args);
-
-        return list;
+        String arguments = event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length());
+        if(arguments.length() > 0) {
+            arguments = arguments.substring(1);
+            String[] args = arguments.split(" ");
+            return Arrays.asList(args);
+        } else {
+            return new ArrayList<String>();
+        }
     }
 
     public String getExecutorAvatar(){
-        return "https://cdn.discordapp.com/avatars/" + event.getMember().getId() +  "/" + event.getMember().getUser().getDefaultAvatarId() + ".png?size=2048";
+        return "https://cdn.discordapp.com/avatars/" + event.getMember().getId() +  "/" + event.getMember().getUser().getAvatarId() + ".png?size=2048";
     }
 
     public List<Member> getMentions(){

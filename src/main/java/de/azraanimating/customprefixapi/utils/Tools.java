@@ -17,4 +17,8 @@ public class Tools {
     public ChannelManager getChannelManager() {
         return new ChannelManager(event.getGuild());
     }
+
+    public UserManager getUserManager() {
+        return new UserManager(event.getGuild());
+    }
 }
