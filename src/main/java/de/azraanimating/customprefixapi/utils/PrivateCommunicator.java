@@ -33,4 +33,8 @@ public class PrivateCommunicator {
     public PrivateChannel getPrivateChannel(){
         return privateChannel;
     }
+
+    public sendMessage(MessageEmbed message){
+      privateChannel.sendMessage(message).queue();
+    }
 }
