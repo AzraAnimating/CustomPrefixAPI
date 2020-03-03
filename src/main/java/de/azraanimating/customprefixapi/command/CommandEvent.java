@@ -90,8 +90,19 @@ public class CommandEvent {
     }
 
 
+    public String getArgsAsString(){
+        if(!this.getArgs().isEmpty()){
+            return event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length());
+        } else {
+            return "";
+        }
+    }
+
     public List<String> getArgs(){
         String arguments = event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length());
+        if(event.getMessage().getContentRaw().startsWith(prefix + " ")){
+            arguments = event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1);
+        }
         if(arguments.length() > 0) {
             arguments = arguments.substring(1);
             String[] args = arguments.split(" ");

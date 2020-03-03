@@ -39,7 +39,7 @@ public class UserManager {
     }
 
     public String getAvatarURL(Member member){
-        return "https://cdn.discordapp.com/avatars/" + member.getId() +  "/" + member.getUser().getDefaultAvatarId() + ".png?size=2048";
+        return "https://cdn.discordapp.com/avatars/" + member.getId() +  "/" + member.getUser().getAvatarId() + ".png?size=2048";
     }
 
 

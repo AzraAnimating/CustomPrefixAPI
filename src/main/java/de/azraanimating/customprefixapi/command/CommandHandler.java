@@ -24,12 +24,19 @@ public class CommandHandler {
 
         if(message.startsWith(prefix)){
 
-            String[] args = message.split(" ");
-            String handleCommand = args[0].substring(prefix.length());
+            String handleCommand;
+
+            if(event.getMessage().getContentRaw().startsWith(prefix + " ")){
+                String[] args = message.split(" ");
+                handleCommand = args[1];
+            } else {
+                String[] args = message.split(" ");
+                handleCommand = args[0].substring(prefix.length());
+            }
 
             commands.forEach(command -> {
                 if(handleCommand.equalsIgnoreCase(command.getName())){
-                    command.excecute(new CommandEvent(event, command, prefix));
+                    command.excecute(new CommandEvent(event, command, prefix.replace(" ", "")));
                 }
             });
         }
