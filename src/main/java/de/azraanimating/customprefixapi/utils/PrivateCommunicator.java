@@ -34,7 +34,7 @@ public class PrivateCommunicator {
         return privateChannel;
     }
 
-    public sendMessage(MessageEmbed message){
+    public void setMessage(MessageEmbed message){
       privateChannel.sendMessage(message).queue();
     }
 }

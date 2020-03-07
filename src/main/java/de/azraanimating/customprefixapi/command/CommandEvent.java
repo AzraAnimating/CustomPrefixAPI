@@ -92,7 +92,7 @@ public class CommandEvent {
 
     public String getArgsAsString(){
         if(!this.getArgs().isEmpty()){
-            return event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length());
+            return event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1);
         } else {
             return "";
         }
@@ -158,6 +158,10 @@ public class CommandEvent {
 
     public void replyCode(String pMessage){
         reply("```" + pMessage + "```");
+    }
+
+    public void deleteEventMessage(){
+        event.getMessage().delete().queue();
     }
 
     public void sendSimpleEmbed(String pHeader, String pMessage, Color pColor){
