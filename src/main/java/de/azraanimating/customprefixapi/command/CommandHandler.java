@@ -1,11 +1,10 @@
 package de.azraanimating.customprefixapi.command;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import net.dv8tion.jda.api.sharding.DefaultShardManager;
-import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class CommandHandler {
 
@@ -17,6 +16,17 @@ public class CommandHandler {
 
     public List<Command> getCommands(){
         return commands;
+    }
+
+    public Command getCommandByName(String pName){
+        AtomicReference<Command> foundCommand = null;
+        commands.forEach(command -> {
+            if(command.getName().equalsIgnoreCase(pName)){
+                foundCommand.set(command);
+            }
+        });
+
+        return foundCommand.get();
     }
 
     public void handle(GuildMessageReceivedEvent event, String prefix){
