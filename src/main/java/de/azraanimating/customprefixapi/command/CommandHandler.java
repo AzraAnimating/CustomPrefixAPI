@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class CommandHandler {
 
-    private static List<Command> commands = new ArrayList<Command>();
+    private List<Command> commands = new ArrayList<Command>();
 
     public void addCommand(Command command){
         commands.add(command);
