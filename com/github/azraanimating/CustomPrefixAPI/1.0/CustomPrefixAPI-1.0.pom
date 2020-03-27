@@ -93,6 +93,14 @@
             <name>jcenter-bintray</name>
             <url>https://jcenter.bintray.com</url>
         </repository>
+        <repository>
+            <id>CustomPrefixAPI-mvn-repo</id>
+            <url>https://github.com/AzraAnimating/CustomPrefixAPI/raw/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
     </repositories>
 
 
