@@ -106,7 +106,7 @@
 
     <groupId>com.github.azraanimating</groupId>
     <artifactId>CustomPrefixAPI</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
 
