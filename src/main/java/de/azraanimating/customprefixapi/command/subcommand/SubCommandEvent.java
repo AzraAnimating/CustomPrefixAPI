@@ -20,10 +20,10 @@ public class SubCommandEvent {
     private SubCommand command;
     private String prefix;
 
-    public SubCommandEvent(CommandEvent receivedEvent, SubCommand receivedCommand, String receivedPrefix){
+    public SubCommandEvent(CommandEvent receivedEvent, SubCommand receivedCommand){
         event = receivedEvent;
         command = receivedCommand;
-        prefix = receivedPrefix;
+        prefix = event.getPrefix();
     }
 
     //GetMethods

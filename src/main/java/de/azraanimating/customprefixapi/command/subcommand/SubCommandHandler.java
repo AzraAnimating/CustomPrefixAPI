@@ -30,26 +30,18 @@ public class SubCommandHandler{
         return foundCommand.get();
     }
 
-    public void handle(GuildMessageReceivedEvent event, String prefix){
-        String message = event.getMessage().getContentRaw();
+    public void handle(CommandEvent event){
+        String message = event.getArgsAsString();
 
-        if(message.startsWith(prefix)){
+        String handleCommand;
 
-            String handleCommand;
+            String[] args = message.split(" ");
+            handleCommand = args[0];
 
-            if(event.getMessage().getContentRaw().startsWith(prefix + " ")){
-                String[] args = message.split(" ");
-                handleCommand = args[1];
-            } else {
-                String[] args = message.split(" ");
-                handleCommand = args[0].substring(prefix.length());
+        subCommands.forEach(command -> {
+            if(handleCommand.equalsIgnoreCase(command.getName())){
+                command.excecute(new SubCommandEvent(event, command));
             }
-
-            subCommands.forEach(command -> {
-                if(handleCommand.equalsIgnoreCase(command.getName())){
-                    command.excecute(new SubCommandEvent(new CommandEvent(event, command.getParentCommand(), prefix.replace(" ", "")), command, prefix.replace(" ", "")));
-                }
-            });
-        }
-    }
+        });
+}
 }

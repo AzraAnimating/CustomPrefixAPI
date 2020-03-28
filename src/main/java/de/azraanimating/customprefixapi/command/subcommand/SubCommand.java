@@ -1,7 +1,6 @@
 package de.azraanimating.customprefixapi.command.subcommand;
 
 import de.azraanimating.customprefixapi.command.Command;
-import de.azraanimating.customprefixapi.command.CommandEvent;
 
 public abstract class SubCommand{
 
