@@ -83,16 +83,11 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.1.1_126</version>
+            <version>4.1.1_127</version>
         </dependency>
     </dependencies>
 
     <repositories>
-        <repository>
-            <id>jcenter</id>
-            <name>jcenter-bintray</name>
-            <url>https://jcenter.bintray.com</url>
-        </repository>
         <repository>
             <id>CustomPrefixAPI-mvn-repo</id>
             <url>https://github.com/AzraAnimating/CustomPrefixAPI/raw/mvn-repo/</url>
@@ -101,12 +96,17 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
+        <repository>
+            <id>jcenter</id>
+            <name>jcenter-bintray</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
     </repositories>
 
 
     <groupId>com.github.azraanimating</groupId>
     <artifactId>CustomPrefixAPI</artifactId>
-    <version>1.1</version>
+    <version>1.5</version>
     <packaging>jar</packaging>
 
 
