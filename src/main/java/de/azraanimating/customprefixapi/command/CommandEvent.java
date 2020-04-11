@@ -204,8 +204,8 @@ public class CommandEvent {
         List<Member> members = new ArrayList<>();
 
         this.getArgs().forEach(argument -> {
-            if(argument.startsWith("<@!") && argument.endsWith(">")){
-                argument = argument.replace("<@!", "").replace(">", "");
+            if(argument.startsWith("<@") && argument.endsWith(">")){
+                argument = argument.replace("<@", "").replace(">", "").replace("!", "");
                 memberIDs.add(argument);
             }
         });
