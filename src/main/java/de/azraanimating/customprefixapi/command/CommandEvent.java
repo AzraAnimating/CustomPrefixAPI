@@ -19,13 +19,13 @@ public class CommandEvent {
     private Command command;
     private String prefix;
 
-    public CommandEvent(GuildMessageReceivedEvent receivedEvent, Command receivedCommand, String receivedPrefix){
+    public CommandEvent(GuildMessageReceivedEvent receivedEvent, Command receivedCommand, String receivedPrefix) {
         event = receivedEvent;
         command = receivedCommand;
         prefix = receivedPrefix;
     }
 
-    public CommandEvent(GuildMessageUpdateEvent receivedEvent, Command receivedCommand, String receivedPrefix){
+    public CommandEvent(GuildMessageUpdateEvent receivedEvent, Command receivedCommand, String receivedPrefix) {
         updateEvent = receivedEvent;
         command = receivedCommand;
         prefix = receivedPrefix;
@@ -33,20 +33,20 @@ public class CommandEvent {
 
     //GetMethods
 
-    public Command getCommand(){
+    public Command getCommand() {
         return command;
     }
 
-    public Guild getGuild(){
-        if(event != null) {
+    public Guild getGuild() {
+        if (event != null) {
             return event.getGuild();
         } else {
             return updateEvent.getGuild();
         }
     }
 
-    public TextChannel getChannel(){
-        if(event != null) {
+    public TextChannel getChannel() {
+        if (event != null) {
             return event.getChannel();
         } else {
             return updateEvent.getChannel();
@@ -57,72 +57,72 @@ public class CommandEvent {
         return this.getChannel().getParent();
     }
 
-    public User getUser(){
-        if(event != null) {
+    public User getUser() {
+        if (event != null) {
             return event.getMember().getUser();
         } else {
             return updateEvent.getMember().getUser();
         }
     }
 
-    public Member getMember(){
-        if(event != null) {
+    public Member getMember() {
+        if (event != null) {
             return event.getMember();
         } else {
             return updateEvent.getMember();
         }
     }
 
-    public User getAuthor(){
-        if(event != null) {
+    public User getAuthor() {
+        if (event != null) {
             return event.getAuthor();
         } else {
             return updateEvent.getAuthor();
         }
     }
 
-    public JDA getJDA(){
-        if(event != null) {
+    public JDA getJDA() {
+        if (event != null) {
             return event.getJDA();
         } else {
             return updateEvent.getJDA();
         }
     }
 
-    public String getMessageID(){
-        if(event != null) {
+    public String getMessageID() {
+        if (event != null) {
             return event.getMessageId();
         } else {
             return updateEvent.getMessageId();
         }
     }
 
-    public boolean isWebhookMessage(){
-        if(event != null) {
+    public boolean isWebhookMessage() {
+        if (event != null) {
             return event.isWebhookMessage();
         } else {
             return false;
         }
     }
 
-    public Message getMessage(){
-        if(event != null) {
+    public Message getMessage() {
+        if (event != null) {
             return event.getMessage();
         } else {
             return updateEvent.getMessage();
         }
     }
 
-    public String getMessageText(){
-        if(event != null) {
+    public String getMessageText() {
+        if (event != null) {
             return event.getMessage().getContentRaw();
         } else {
             return updateEvent.getMessage().getContentRaw();
         }
     }
 
-    public GuildMessageReceivedEvent getMessageReceivedEvent(){
-        if(event != null) {
+    public GuildMessageReceivedEvent getMessageReceivedEvent() {
+        if (event != null) {
             return event;
         } else {
             return null;
@@ -130,36 +130,36 @@ public class CommandEvent {
     }
 
     public GuildMessageUpdateEvent getMessageUpdateEvent() {
-        if(updateEvent != null){
+        if (updateEvent != null) {
             return updateEvent;
         } else {
             return null;
         }
     }
 
-    public TextChannel getTextChannel(){
-        if(event != null) {
+    public TextChannel getTextChannel() {
+        if (event != null) {
             return event.getGuild().getTextChannelById(event.getChannel().getId());
         } else {
             return updateEvent.getGuild().getTextChannelById(event.getChannel().getId());
         }
     }
 
-    public String getPrefix(){
+    public String getPrefix() {
         return prefix;
     }
 
-    public boolean equals(CommandEvent commandEvent){
-        if(commandEvent.getMessageReceivedEvent() != null) {
+    public boolean equals(CommandEvent commandEvent) {
+        if (commandEvent.getMessageReceivedEvent() != null) {
             return event.equals(commandEvent.getMessageReceivedEvent());
         } else {
             return updateEvent.equals(commandEvent.getMessageUpdateEvent());
         }
     }
 
-    public String getArgsAsString(){
-        if(!this.getArgs().isEmpty()){
-            if(event != null) {
+    public String getArgsAsString() {
+        if (!this.getArgs().isEmpty()) {
+            if (event != null) {
                 return event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1);
             } else {
                 return updateEvent.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1);
@@ -169,9 +169,9 @@ public class CommandEvent {
         }
     }
 
-    public List<String> getArgs(){
+    public List<String> getArgs() {
         String arguments;
-        if(event != null) {
+        if (event != null) {
             arguments = event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length());
             if (event.getMessage().getContentRaw().startsWith(prefix + " ")) {
                 arguments = event.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1);
@@ -182,7 +182,7 @@ public class CommandEvent {
                 arguments = updateEvent.getMessage().getContentRaw().substring(command.getName().length() + prefix.length() + 1);
             }
         }
-        if(arguments.length() > 0) {
+        if (arguments.length() > 0) {
             arguments = arguments.substring(1);
             String[] args = arguments.split(" ");
             return Arrays.asList(args);
@@ -191,20 +191,20 @@ public class CommandEvent {
         }
     }
 
-    public String getExecutorAvatar(){
-        if(event != null) {
+    public String getExecutorAvatar() {
+        if (event != null) {
             return "https://cdn.discordapp.com/avatars/" + event.getMember().getId() + "/" + event.getMember().getUser().getAvatarId() + ".png?size=2048";
         } else {
             return "https://cdn.discordapp.com/avatars/" + updateEvent.getMember().getId() + "/" + updateEvent.getMember().getUser().getAvatarId() + ".png?size=2048";
         }
     }
 
-    public List<Member> getMentions(){
+    public List<Member> getMentions() {
         List<String> memberIDs = new ArrayList<>();
         List<Member> members = new ArrayList<>();
 
         this.getArgs().forEach(argument -> {
-            if(argument.startsWith("<@") && argument.endsWith(">")){
+            if (argument.startsWith("<@") && argument.endsWith(">")) {
                 argument = argument.replace("<@", "").replace(">", "").replace("!", "");
                 memberIDs.add(argument);
             }
@@ -213,7 +213,7 @@ public class CommandEvent {
         memberIDs.forEach(userID -> {
             try {
                 members.add(this.getGuild().getMemberById(userID));
-            } catch (Exception e){
+            } catch (Exception e) {
 
             }
         });
@@ -221,14 +221,56 @@ public class CommandEvent {
         return members;
     }
 
-    public Tools getTools(){
+    public List<TextChannel> getTextChannelMentions() {
+        List<String> textChannelIDs = new ArrayList<>();
+        List<TextChannel> textChannels = new ArrayList<>();
+
+        this.getArgs().forEach(argument -> {
+            if (argument.startsWith("<@#") && argument.endsWith(">")) {
+                argument = argument.replace("<@#", "").replace(">", "").replace("!", "");
+                textChannelIDs.add(argument);
+            }
+        });
+
+        textChannelIDs.forEach(channelID -> {
+            try {
+                textChannels.add(this.getGuild().getTextChannelById(channelID));
+            } catch (Exception e) {
+
+            }
+        });
+
+        return textChannels;
+    }
+
+    public List<Role> getRoleMentions(){
+        List<String> roleIDs = new ArrayList<>();
+        List<Role> roles = new ArrayList<>();
+
+        this.getArgs().forEach(argument -> {
+            if(argument.startsWith("<@&") && argument.endsWith(">")){
+                argument = argument.replace("<@&", "").replace(">", "").replace("!", "");
+                roleIDs.add(argument);
+            }
+        });
+
+        roleIDs.forEach(roleid -> {
+            try {
+                roles.add(this.getGuild().getRoleById(roleid));
+            } catch (Exception e){}
+        });
+
+        return roles;
+    }
+
+    public Tools getTools() {
         return new Tools(this);
     }
 
     //New Methods
 
-    public void reply(String pMessage){
-        if(event != null) {
+    public void reply(String pMessage) {
+        if (event != null) {
             event.getChannel().sendMessage(pMessage).queue();
         } else {
             updateEvent.getChannel().sendMessage(pMessage).queue();
@@ -236,26 +278,26 @@ public class CommandEvent {
     }
 
     public void reply(MessageEmbed messageEmbed) {
-        if(event != null) {
+        if (event != null) {
             event.getChannel().sendMessage(messageEmbed).queue();
         } else {
             updateEvent.getChannel().sendMessage(messageEmbed).queue();
         }
     }
 
-    public void deleteEventMessage(){
-        if(event != null) {
+    public void deleteEventMessage() {
+        if (event != null) {
             event.getMessage().delete().queue();
         } else {
             updateEvent.getMessage().delete().queue();
         }
     }
 
-    public void sendSimpleEmbed(String pHeader, String pMessage, Color pColor){
+    public void sendSimpleEmbed(String pHeader, String pMessage, Color pColor) {
         EmbedBuilder eb = new EmbedBuilder()
                 .addField(pHeader, pMessage, false)
                 .setColor(pColor);
-        if(event != null) {
+        if (event != null) {
             event.getChannel().sendMessage(eb.build()).queue();
         } else {
             updateEvent.getChannel().sendMessage(eb.build()).queue();

@@ -2,7 +2,6 @@ package de.azraanimating.customprefixapi.command;
 
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageUpdateEvent;
-import sun.management.snmp.jvminstr.JvmMemPoolEntryImpl;
 
 import java.util.ArrayList;
 import java.util.List;
