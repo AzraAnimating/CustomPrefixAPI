@@ -84,7 +84,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.1.1_127</version>
+            <version>4.1.1_154</version>
         </dependency>
     </dependencies>
 
@@ -107,7 +107,7 @@
 
     <groupId>com.github.azraanimating</groupId>
     <artifactId>CustomPrefixAPI</artifactId>
-    <version>1.8</version>
+    <version>1.9</version>
     <packaging>jar</packaging>
 
 
